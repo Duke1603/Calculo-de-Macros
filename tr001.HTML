@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento Operadores</title>
+<style> body {background-color: burlywood;
+        color: black;   
+        font: 18pt Arial;
+        margin: 100px;
+        margin-top: 10px;
+        }
+        input{
+            width: 100px;
+            margin-top: 10px;
+        }
+        div#caloriasatuais{
+            margin-top: 20px;
+        }
+</style>
+</head>
+<body>
+    <h1>Let the Training Begin!</h1>
+    <p>Cálculo do GCD</p>
+    Peso: <input type="number" name= "peso" id= "peso"> Kg </br>
+    Altura: <input type="number" name= "altura" id= "altura"> cm </br>
+    Idade: <input type="number" name= "idade" id = "idade"> </br>
+    <input type="button" value="Calcular" onclick="Kcalatual()"> 
+    <div id = 'caloriasatuais'></div>
+   
+    Qual o seu objetivo? 
+    <select id="objetivo" onchange="objetivo()">
+        <option>--escolha seu objetivo--</option>
+        <option value="Ganhar peso">Ganhar peso</option>
+        <option value="Manter peso">Manter peso</option>
+        <option value="Perder peso">Perder peso</option>
+    </select>
+        <div id="resposta"></div>
+    <script>
+       function Kcalatual(){
+        let p = document.getElementById('peso')
+        let h = document.getElementById('altura')
+        let i = document.getElementById('idade')
+        let Kcalhj = document.getElementById('caloriasatuais')
+        Kcalhj = 1.3*(66.47+(13.75*p.value)+(5*h.value)-(6.8*i.value))
+        Kcalhja = parseFloat(Kcalhj.toFixed(2)) //Arredondamento
+        caloriasatuais.innerHTML = (`Seu gasto calórico diário é de ${Kcalhja} calorias`)
+        }
+        function objetivo(){     
+            resposta.innerHTML = "" //Limpa a resposta anterior
+            let obj = document.getElementById('objetivo').value
+            console.log(obj)
+            switch (obj) {
+                case "Ganhar peso": 
+                Kcalhja += 300     
+                resposta.innerHTML = (`Para uma dieta de ganho de massa você deve ingerir no minímo ${Kcalhja.toFixed(2)} cal por dia.`) 
+                Kcalhja -= 300
+                break;
+                case "Perder peso":
+                Kcalhja -= 300
+                resposta.innerHTML = (`Para uma dieta focada em perder peso, você deve ter um defict calórico de 300 calorias aproximadamente, então tente alcançar o valor de ${Kcalhja.toFixed(2)} cal por dia`)
+                Kcalhja +=300
+                break;
+                default:
+                resposta.innerHTML = (`Para uma dieta focada em manter o peso, basta bater as ${Kcalhja.toFixed(2)} cal por dia`)
+                break;
+            }
+            /*if (obj == 'Ganhar peso') { 
+            Kcalhja += 300     
+            resposta.innerHTML = (`Para uma dieta de ganho de massa você deve ingerir no minímo ${Kcalhja} cal por dia.`) 
+            } else if (obj == 'Manter peso') {         
+            resposta.innerHTML = (`Para uma dieta focada em manter o peso, basta bater as ${Kcalhja} cal por dia`)
+            } else {
+            Kcalhja -= 300
+            resposta.innerHTML = (`Para uma dieta focada em perder peso, você deve ter um defict calórico de 300 calorias aproximadamente, então tente alcançar o valor de ${Kcalhja} cal por dia`)*/
+        }
+    </script>
+</body>
+</html>
